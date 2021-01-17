@@ -30,10 +30,17 @@ febdata$Time <- as.POSIXct(datetime)
 febdata$Date <- as.Date(febdata$Date, "%d/%m/%y")
 
 #create graphing device
-png(file = "Plot2.png", width=480, height=480)
+png(file = "Plot3.png", width=480, height=480)
 
 #plot
-plot(febdata$Time, febdata$Global_active_power, type="l", ylab ="Global Active Power (kilowatts)", xlab = "")
+x <- febdata$Time
+y1 <- febdata$Sub_metering_1
+y2 <- febdata$Sub_metering_2
+y3 <- febdata$Sub_metering_3
+plot(x, y1, type="l", ylab ="Energy sub metering", xlab = "", ylim = c(0,38))
+lines(x, y2,  type="l", col = "red")
+lines(x, y3,  type="l", col = "blue")
+legend("topright", legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), lty=1, lwd=1.5, col = c("black", "red", "blue"))
 
 #turn off graphing device
 dev.off()

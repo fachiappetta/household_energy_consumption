@@ -29,9 +29,13 @@ febdata$Time <- as.POSIXct(datetime)
 #convert date to date class
 febdata$Date <- as.Date(febdata$Date, "%d/%m/%y")
 
-#create histogram
+#create graphing device
 png(file = "Plot1.png", width=480, height=480)
+
+#create histogram
 hist(febdata$Global_active_power, main = "Global Active Power", xlab = "Global Active Power (kilowatts)", col = "red")
+
+#turn off graphing device
 dev.off()
 
 
